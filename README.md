@@ -47,6 +47,17 @@ Use Roblox Asset Generator to scaffold the Lua scripts that reference and config
 
 This describes a standard asset-creation workflow. Forge itself generates original concept previews and metadata; it does not create 3D model files or scaffold Roblox Lua scripts.
 
+## Content management
+
+Open **http://127.0.0.1:8000/cms.html** while the local server is running to use the CMS workspace. It uses the same local SQLite library as the generator and supports:
+
+- Searching and filtering saved records by workflow status and asset class.
+- Creating and editing concept metadata, including title, description, tags, and status (draft, in review, approved, or archived).
+- Deleting records and exporting an individual record or a JSON collection.
+- Importing a CMS collection or individual CMS JSON records.
+
+The CMS is a local, single-user content organizer, not a hosted service; the local server does not provide user authentication or multi-user access controls. CMS workflow status does not mean an asset has been uploaded to or approved by Roblox.
+
 ## Persistence and API
 
 Saved concepts are stored in `data/forge.sqlite3`, not browser storage. The library survives browser restarts and app restarts. Back up this file to preserve the local collection.

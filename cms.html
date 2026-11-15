@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101211">
+  <meta name="description" content="Manage Forge Studio asset concepts and CMS metadata locally.">
+  <title>Forge Studio — Content Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cms.css">
+  <script src="cms.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="Forge Studio generator"><span class="brand-mark">F</span><span>FORGE<span class="dot">.</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="side-link" href="/"><span>◈</span> Generator</a>
+      <a class="side-link active" href="/cms.html"><span>▤</span> Content manager</a>
+      <div class="side-note"><span>✳</span><b>Concepts, not models.</b><p>Manage original concept records and metadata. This workspace does not create or upload Roblox model files.</p></div>
+      <div class="side-foot"><i></i> DEVICE-LOCAL SQLITE</div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div class="crumb">FORGE STUDIO <span>/</span> <b>CONTENT MANAGER</b></div><a class="back-link" href="/">← Back to generator</a></header>
+      <section class="heading"><div><div class="eyebrow">LOCAL CONTENT MANAGEMENT</div><h1>Concept <em>library.</em></h1><p>Review, organize, and export your generated asset concepts.</p></div><button class="button primary" id="new-record">＋ New concept</button></section>
+      <section class="stats" aria-label="Library summary">
+        <article class="stat"><span>ALL CONCEPTS</span><strong id="stat-total">—</strong></article>
+        <article class="stat"><span>DRAFTS</span><strong id="stat-draft">—</strong></article>
+        <article class="stat"><span>IN REVIEW</span><strong id="stat-review">—</strong></article>
+        <article class="stat"><span>APPROVED</span><strong id="stat-approved">—</strong></article>
+      </section>
+      <section class="toolbar" aria-label="Filter concepts">
+        <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search concepts, styles, tags…" autocomplete="off"></label>
+        <select id="status-filter" aria-label="Filter by status"><option value="all">All statuses</option><option value="draft">Draft</option><option value="review">In review</option><option value="approved">Approved</option><option value="archived">Archived</option></select>
+        <select id="class-filter" aria-label="Filter by asset class"><option value="all">All classes</option></select>
+        <button class="button secondary" id="export-button">Export JSON</button>
+        <button class="button secondary" id="import-button">Import JSON</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+      </section>
+      <div class="result-line"><span id="result-count">Loading concepts…</span><button class="text-button" id="refresh-button">↻ Refresh</button></div>
+      <section id="records" class="records" aria-live="polite"></section>
+      <footer>FORGE STUDIO · ORIGINAL CONCEPTS, NOT CATALOG ITEMS <span>LOCAL WORKSPACE</span></footer>
+    </main>
+  </div>
+
+  <dialog id="editor" class="editor">
+    <form id="editor-form" method="dialog">
+      <div class="dialog-head"><div><div class="eyebrow">CMS RECORD</div><h2 id="editor-title">Edit concept</h2></div><button class="icon-button" type="button" id="close-editor" aria-label="Close">×</button></div>
+      <input id="record-id" type="hidden">
+      <label class="form-field">Title<input id="record-name" maxlength="160" required></label>
+      <label class="form-field">Description<textarea id="record-description" rows="4" maxlength="4000"></textarea></label>
+      <div class="form-grid"><label class="form-field">Asset class<input id="record-class" maxlength="80"></label><label class="form-field">Style<input id="record-style" maxlength="80"></label></div>
+      <label class="form-field">Tags <small>Separate tags with commas</small><input id="record-tags" maxlength="500" placeholder="companion, playful, original"></label>
+      <div class="form-grid"><label class="form-field">Workflow status<select id="record-status"><option value="draft">Draft</option><option value="review">In review</option><option value="approved">Approved</option><option value="archived">Archived</option></select></label><div class="disclaimer"><b>Roblox upload status</b><span>Not created — this is a concept record.</span></div></div>
+      <div class="dialog-actions"><button class="button secondary" type="button" id="cancel-editor">Cancel</button><button class="button primary" type="submit">Save record</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
