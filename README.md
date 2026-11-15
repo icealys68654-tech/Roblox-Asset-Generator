@@ -27,6 +27,24 @@ The server binds to `127.0.0.1` by default, so it is only accessible from your c
 
 Templates include Pocket companion, Arcane artifact, Retro gadget, Organic bloom, Modular structure, and Wearable token. The live preview is a layered procedural SVG with shaded geometry; it is an illustration of a concept, not a 3D model.
 
+## Intersect/Union: The standard asset pipeline
+
+In most Roblox workflows, you create assets in a DCC (digital content creation) tool, export them in a common file format, and import them into Roblox Studio. See the [official Roblox overview](https://create.roblox.com/docs/en-us/art/overview-dcc).
+
+🎨 **01 — Create in a DCC tool**  
+Model, texture, or script your asset in a third-party tool such as Blender, Substance Painter, or Maya. For simple solid shapes, Roblox Studio's solid modeling tools can also combine or intersect parts using Union and Negate operations.
+
+📦 **02 — Export as a common format**  
+Export your asset as FBX, OBJ, or PNG—the file types Roblox Studio can import directly.
+
+🚀 **03 — Import into Studio**  
+Use Roblox Studio's Asset Manager or the Import 3D dialog to bring your asset into the experience.
+
+⚡ **04 — Apply with RAG**  
+Use Roblox Asset Generator to scaffold the Lua scripts that reference and configure your imported assets.
+
+This describes a standard asset-creation workflow. Forge itself generates original concept previews and metadata; it does not create 3D model files or scaffold Roblox Lua scripts.
+
 ## Persistence and API
 
 Saved concepts are stored in `data/forge.sqlite3`, not browser storage. The library survives browser restarts and app restarts. Back up this file to preserve the local collection.
