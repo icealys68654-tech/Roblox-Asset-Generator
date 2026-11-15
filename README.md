@@ -1,6 +1,8 @@
 # Forge Studio — Local Roblox Asset Concept Generator
 
-Forge is a local-first web app for creating original Roblox-inspired asset concepts. It combines a four-stage generator, richer procedural SVG previews, category templates, a SQLite-backed saved library, and CMS-oriented JSON exports.
+## Abstract
+
+Forge Studio is a local-first web application for designing and organizing original Roblox-inspired asset concepts. It combines configurable generation inputs, repeatable component and material suggestions, procedural SVG previews, a persistent SQLite library, and CMS-ready JSON exports. The README also outlines the standard Roblox asset pipeline: create or shape assets with DCC tools or Studio's Intersect/Union operations, export supported files, import them into Studio, and use Roblox Asset Generator (RAG) to scaffold scripts that reference and configure those assets. Forge supports concept development and metadata workflows; it does not create 3D model files or upload assets to Roblox.
 
 ## Run locally
 
